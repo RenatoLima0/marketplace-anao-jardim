@@ -17,9 +17,10 @@ ActiveRecord::Schema.define(version: 2020_06_01_204711) do
 
   create_table "products", force: :cascade do |t|
     t.string "localization"
-    t.integer "disponibity"
+    t.integer "disponibility"
     t.decimal "price"
-    t.string "categorie"
+    t.string "category"
+    t.string "title"
     t.text "description"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
