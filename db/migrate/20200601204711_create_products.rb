@@ -4,7 +4,8 @@ class CreateProducts < ActiveRecord::Migration[6.0]
       t.string :localization
       t.integer :disponibility
       t.numeric :price
-      t.string :categorie
+      t.string :category
+      t.string :title
       t.text :description
       t.references :user
 

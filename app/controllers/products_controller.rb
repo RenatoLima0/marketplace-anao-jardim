@@ -1,7 +1,8 @@
 class ProductsController < ApplicationController
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @product = Product.all
+    @products = Product.all
   end
   
   def show
@@ -17,31 +18,17 @@ class ProductsController < ApplicationController
   end
   
   def update
-    @product = Product.find params[:id]
-    respond_to do |format|
-      if @product.update product_params
-         ...
-      end
+    if @product.update(product_params)
+      redirect_to @product, notice: 'Product was successfully updated.'
+    else
+      render :edit
     end
- end
-
- private
-
- def product_params
-   params.require(:products).permit(:name, :category, :description, food_images_attributes: [:id, :product_id, :avatar]) #-> this is enough (no need to "whitelist")
- end
-end
+  end
 
   def destroy
     @product = Product.find(params[:id])
     @product.destroy
-    redirect_to cocktail_path(@product.cocktail)
-  end
-
-  private
-
-  def product_params
-    params.require(:product).permit(:description, :user_id)
+    redirect_to product_path(@product.product)
   end
 
   def create
@@ -56,10 +43,10 @@ end
   private
 
   def product_params
-    params.require(:product).permit(:name)
-    
+    params.require(:products).permit(:title, :category, :description, :price, :localization, :disponibility, [:id, :product_id])
   end
-end
 
-
+  def set_product
+    @product = Product.find(params[:id])
+  end
 end
