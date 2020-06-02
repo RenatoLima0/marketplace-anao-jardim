@@ -17,8 +17,20 @@ class ProductsController < ApplicationController
   end
   
   def update
-    
-  end
+    @product = Product.find params[:id]
+    respond_to do |format|
+      if @product.update product_params
+         ...
+      end
+    end
+ end
+
+ private
+
+ def product_params
+   params.require(:products).permit(:name, :category, :description, food_images_attributes: [:id, :product_id, :avatar]) #-> this is enough (no need to "whitelist")
+ end
+end
 
   def destroy
     @product = Product.find(params[:id])
@@ -45,6 +57,7 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:name)
+    
   end
 end
 
