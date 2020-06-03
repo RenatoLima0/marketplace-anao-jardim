@@ -43,3 +43,11 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%=link_to "edit product",edit_product_path(@product) %>
+<%=link_to "delete product",@product, method: :delete, data: {confirm: "Are u sure"} %>
