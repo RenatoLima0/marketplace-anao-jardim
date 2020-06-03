@@ -1,7 +1,9 @@
 class Product < ApplicationRecord
   belongs_to :user
   has_one_attached :photo
+  geocoded_by :localization
 
+  after_validation :geocode, if: :will_save_change_to_localization?
   validates :title, presence: true
   validates :localization, presence: true
   validates :disponibility, presence: true
