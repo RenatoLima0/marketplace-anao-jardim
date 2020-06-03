@@ -1,0 +1,16 @@
+.btn-pry {
+  background-color: $primary-color;
+  border-radius: 20px;
+  color: #fff;
+  font-family: 'Roboto';
+  font-size: 17px;
+  font-weight: 600;
+  padding: 15px 50px;
+  transition: .3s;
+}
+
+.btn-pry:hover{
+  background-color: $blue;
+  color: #fff;
+  text-decoration: none;
+}
