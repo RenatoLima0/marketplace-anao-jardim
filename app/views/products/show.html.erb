@@ -8,9 +8,8 @@
       <%= @product.title%>
     </h1>
 
-
-
     <div class="row">
+
     <div class="col-md-8">
     
     <% if @product.photo.attached? %>
@@ -22,24 +21,26 @@
         <p style="text-align: justify;"><%= @product.description %></p>
       </div>
     </div>
+
+    
     <div class="col-md-4">
       <div class="card-flat">
         <div id="flat-show">
           <div class="flat-info">
-          <div>
-            <h4 class="my-3"><strong>Planet:</strong></h4>
-            <h3><%= @product.title %></h3>
+
+            <div>
+              <h4 class="my-3"><strong>Planet:</strong></h4>
+              <h3><%= @product.title %></h3>
+            </div>
+            <div>
+              <h4 class="my-3"><strong>Address:</strong></h4>
+              <h3><%= @product.localization %></h3>
+            </div>
+            <div>
+              <h4 class="my-3"><strong>Price:</strong></h4>
+              <h3>Z$ <%= @product.price %></h3>
+            </div>
           </div>
-          <div>
-            <h4 class="my-3"><strong>Address:</strong></h4>
-            <h3><%= @product.localization %></h3>
-          </div>
-          <div>
-            <h4 class="my-3"><strong>Price:</strong></h4>
-            <h3>Z$ <%= @product.price %></h3>
-          </div>
-        </div>
-       
         </div>
       </div>
     </div>
@@ -48,4 +49,3 @@
 
   </div>
 </div>
-
