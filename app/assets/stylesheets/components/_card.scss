@@ -1,0 +1,24 @@
+.card{
+  border: 1px solid rgb(230, 230, 230);
+  border-radius: 3px;
+  box-shadow: 0 0 5px rgba(129, 129, 129, 0.5);
+  min-height: 320px;
+  padding: 20px;
+  text-align: center;
+
+  .card-img{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    min-height: 150px;
+  }
+
+  img{
+    width: 150px;
+  }
+
+  .card p {
+    opacity: .5;
+  }
+}
+
