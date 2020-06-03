@@ -1,0 +1,18 @@
+
+
+<div class="container">
+  <div class="row">
+    <% @products.each do |product| %>
+      <% if product.photo.attached? %>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card" style="background-image: linear-gradient(260deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 50%), url('<%= cl_image_path product.photo.key, height: 600, width: 600, crop: :fill %>')">
+          <div class="card-description">
+            <h2><%= link_to product.title, product %></h2>
+          </div>
+          <%= link_to "", product_path(product), class: 'card-link' %>
+          </div>
+          </div>
+          <% end %>
+    <% end %>
+  </div>
+</div>
