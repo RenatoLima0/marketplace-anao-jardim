@@ -1,57 +1,50 @@
-<%= @product.title %>
-<%= @product.price %>
-
-<%= link_to "Edit", edit_product_path(@product) %>
-<%= link_to "Delete", @product, method: :delete, data: { confirm: 'Are you sure?' } %>
-
-<%= @product.description %>
-
 <div class="container">
   <div class="content-wrapper">
     <h1 class="my-4" style="font-size: 3em;">
-      <%= @product.title%>
+      <%= @product.title %>
     </h1>
-
     <div class="row">
-
-    <div class="col-md-8">
-    
-    <% if @product.photo.attached? %>
-      <%= cl_image_tag @product.photo.key, height: 300, width: 400, crop: :fill %>
-    <% end %>
-
-      <div>
-        <h4 class="my-3"><strong>Description:</strong></h4>
-        <p style="text-align: justify;"><%= @product.description %></p>
-      </div>
-    </div>
-
-    
-    <div class="col-md-4">
-      <div class="card-flat">
-        <div id="flat-show">
-          <div class="flat-info">
-
-            <div>
-              <h4 class="my-3"><strong>Planet:</strong></h4>
-              <h3><%= @product.title %></h3>
-            </div>
-            <div>
-              <h4 class="my-3"><strong>Address:</strong></h4>
-              <h3><%= @product.localization %></h3>
-            </div>
-            <div>
-              <h4 class="my-3"><strong>Price:</strong></h4>
-              <h3>Z$ <%= @product.price %></h3>
-            </div>
-          </div>
+      <div class="col-md-8">
+        <%= cl_image_tag @product.photo.key, class: "d-block w-100", style: "border-radius: 3px; height: 400px; crop: fill;" %>
+        <div>
+          <h4 class="my-3"><strong>Description:</strong></h4>
+          <p style="text-align: justify;"><%= @product.description %></p>
         </div>
       </div>
+      <div class="col-md-4">
+        <div class="card-flat">
+          <div id="flat-show">
+            <div class="flat-info">
+              <div>
+                <h4 class="my-3"><strong>Planet:</strong></h4>
+                <h3><%= @product.title %></h3>
+              </div>
+              <div>
+                <h4 class="my-3"><strong>Address:</strong></h4>
+                <h3><%= @product.localization %></h3>
+              </div>
+              <div>
+                <h4 class="my-3"><strong>Price:</strong></h4>
+                <h3>Z$ <%= @product.price %></h3>
+              </div>
+            </div>
+            <div class="owner-info">
+              <div>
+                <h4 class="my-3"><strong>Owner Info:</strong></h4></strong>
+                <% if @product.disponibility? %>
+                <h3><%= @product.user.name %></h3>
+                <% else %>
+                 <h3><%= current_user.name %>  </h3>
+                 <% end %>
+              </div>
+              <div>
+                <h4 class="my-3"><strong>Phone:</strong></h4>
+                <h3><%= @product.user.email %></h3>
+              </div>
+            </div>
+          </div>
+      </div>
+      <%=link_to "Edit product", edit_product_path(@product)%>
     </div>
-
-
-
-
   </div>
 </div>
-
