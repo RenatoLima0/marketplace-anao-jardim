@@ -1,18 +1,26 @@
-
-
 <div class="container">
   <div class="row">
     <% @products.each do |product| %>
-      <% if product.photo.attached? %>
-      <div class="col-12 col-md-6 col-lg-3">
-        <div class="card" style="background-image: linear-gradient(260deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 50%), url('<%= cl_image_path product.photo.key, height: 600, width: 600, crop: :fill %>')">
-          <div class="card-description">
-            <h2><%= link_to product.title, product %></h2>
+    <% if product.photo.attached? %>
+    <div class="col-12 col-md-6 col-lg-3", margin-bottom: 30px;>
+      <div class="card" style="background-image: linear-gradient(260deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.1) 30%), url('<%= cl_image_path product.photo.key, height: 600, width: 600, crop: :fill %>')">
+        <div class="card-description">
+          <div class="d-flex justify-content-center">
+            <div class="card-body" style="height: 400px; ">
+              <p class="card-text">
+
+                <p><strong>Name: </strong><%= link_to product.title, product %></p>
+                <p><strong>Description: </strong><%= product.description.first(200) %>...</p>
+                <p><strong>Localization: </strong><%= product.localization %></p>
+                <p><strong>Price:</strong> R$ <%= product.price %></p>
+              </p>
+            </div>
           </div>
-          <%= link_to "", product_path(product), class: 'card-link' %>
-          </div>
-          </div>
-          <% end %>
+          <h2><%= link_to product.title, product %></h2>
+        </div>
+        <%= link_to "", product_path(product), class: 'card-link' %>
+      </div>
+    </div>
+    <% end %>
     <% end %>
   </div>
-</div>
