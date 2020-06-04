@@ -1,8 +1,9 @@
 class ProductsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = Product.all
+    @products = Product.where('disponibility > 0')
     @products = Product.geocoded 
 
     @markers = @products.map do |product|
