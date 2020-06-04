@@ -14,6 +14,8 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= yield %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <!-- code a footer -->
     <div class="footer">
       <div class="links">
@@ -25,7 +27,5 @@
 
       </div>
     </div>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
   </body>
 </html>
