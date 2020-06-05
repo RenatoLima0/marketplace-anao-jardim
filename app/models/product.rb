@@ -5,6 +5,7 @@ class Product < ApplicationRecord
   has_one :order, :dependent => :destroy
 
   after_validation :geocode, if: :will_save_change_to_localization?
+  validates :photo, presence: true
   validates :title, presence: true
   validates :localization, presence: true
   validates :disponibility, presence: true, inclusion: { in: 1..100 }
