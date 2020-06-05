@@ -1,6 +1,12 @@
-<h3>Congrats, you just bought a home in <span class="span-model">
-<%= @order.product.title %></span></h3>
-    <h3>From <span class="span-model">
-    <%= @order.product.user.name %></span></h3>
-    <h3>By the price of <span class="span-model">R$<%= @order.product.price %></span></h3>
-    <p><%= link_to 'Back', products_path, class: 'btn btn-outline-light' %></p>
+<div class="container">
+  <div class="justify-content-center row">
+    <div class="col-8 mt-5 text-center">
+      <h3>Congrats, you just bought <span class="span-model" style="color: #EE4323">
+      <%= @order.product.title %></span></h3>
+      <h3>From<span class="span-model" style="color: #2ed573">
+      <%= @order.product.user.email %></span></h3>
+      <h3>By the price of <span class="span-model" style="color: #EE4323">R$<%= @order.product.price %></span></h3>
+      <p><%= link_to 'Back', products_path, class: 'btn btn-sec mt-5' %></p>
+    </div>
+  </div>
+</div>
