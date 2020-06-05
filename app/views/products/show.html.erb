@@ -15,17 +15,14 @@
         <div class="card-product">
           <div id="product-show">
             <div class="product-info">
+             
               <div>
-                <h4 class="my-3"><strong>Name:</strong></h4>
-                <h3><%= @product.title %></h3>
-              </div>
-              <div>
-                <h4 class="my-3"><strong>Address:</strong></h4>
+                <h4 class="my-3"><strong>Address/Localization :</strong></h4>
                 <h3><%= @product.localization %></h3>
               </div>
               <div>
                 <h4 class="my-3"><strong>Price:</strong></h4>
-                <h3>Z$ <%= @product.price %></h3>
+                <h3>R$ <%= @product.price %></h3>
               </div>
             </div>
             <div class="owner-info">
@@ -47,22 +44,30 @@
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="div-btn">
+      <% if user_signed_in? %>
+      <% a = current_user.orders.map do |order|  %>
+        <% order.product %>
+      <% end %>
+
+      <% if a.include?(@product) || @product.user == current_user %>
+        <h2>Already <span class ="span-model">Yours!</span></h2>
+      
+      <% else %>
+        <%= link_to 'Buy', product_orders_path(@product), method: :post, class: 'btn-pry btn ', style: "display: block", data: { confirm: "Are you sure?" } %>
+      <% end %>  <%= link_to 'Back', :back, class: 'btn-sec', style: 'display: block' %>
+
+    <% else %>
+      <%= link_to 'Buy', product_orders_path(@product), method: :post, class: 'btn-pry btn', style: "display: block", data: { confirm: "Are you sure?" } %>
+        <%= link_to 'Back', :back, class: 'btn-sec', style: 'display: block' %>
+    <% end %>
+
+    <% if @product.user == current_user %>
+      <%=link_to "edit product", edit_product_path(@product), class: 'btn-sec' %>
+      <%=link_to "delete product",@product, method: :delete, data: {confirm: "Are you sure ?"}, class: 'btn-danger div-renatomonstro' %>
+    <% end %>
+    </div>
+  </div>
 </div>
-<% if user_signed_in? %>
-  <% a = current_user.orders.map do |order|  %>
-    <% order.product %>
-  <% end %>
 
-  <% if a.include?(@product) || @product.user == current_user %>
-    <h2>Already <span class ="span-model">Yours!</span></h2>
-    <%=link_to "edit product",edit_product_path(@product) %>
-    <%=link_to "delete product",@product, method: :delete, data: {confirm: "Are u sure"} %>
-
-  <% else %>
-    <%= link_to 'Buy', product_orders_path(@product), method: :post, class: 'btn btn-outline-success', style: "display: block", data: { confirm: "Are you sure?" } %>
-  <% end %> | <%= link_to 'Back', :back, class: 'btn btn-outline-light', style: 'display: block' %>
-
-<% else %>
-  <%= link_to 'Buy', product_orders_path(@product), method: :post, class: 'btn btn-outline-success', style: "display: block", data: { confirm: "Are you sure?" } %>
-    | <%= link_to 'Back', :back, class: 'btn btn-outline-light', style: 'display: block' %>
-<% end %>
