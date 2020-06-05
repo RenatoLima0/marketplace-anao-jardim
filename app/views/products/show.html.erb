@@ -6,10 +6,6 @@
     <div class="row">
       <div class="col-md-8">
         <%= cl_image_tag @product.photo.key, class: "d-block w-100", style: "border-radius: 3px; height: 400px; crop: fill;" %>
-        <div>
-          <h4 class="my-3"><strong>Description:</strong></h4>
-          <p style="text-align: justify;"><%= @product.description %></p>
-        </div>
       </div>
       <div class="col-md-4">
         <div class="card-product">
@@ -18,29 +14,27 @@
              
               <div>
                 <h4 class="my-3"><strong>Address/Localization :</strong></h4>
-                <h3><%= @product.localization %></h3>
+                <h3><span class="product-details"><%= @product.localization %></span></h3>
               </div>
               <div>
                 <h4 class="my-3"><strong>Price:</strong></h4>
-                <h3>R$ <%= @product.price %></h3>
+                <h3><span class="product-details">R$ <%= @product.price %></span></h3>
               </div>
             </div>
-            <div class="owner-info">
+            <div class="owner-info mt-5">
               <div>
                 <h4 class="my-3"><strong>Owner Info:</strong></h4></strong>
-                <% if @product.disponibility? %>
-                  <h3><%= @product.user.name %></h3>
-                <% else %>
-                  <h3><%= current_user.name %>  </h3>
-                <% end %>
-              </div>
-              <div>
-                <h4 class="my-3"><strong>Phone:</strong></h4>
                 <h3><%= @product.user.email %></h3>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+          <h4 class="my-3"><strong>Description:</strong></h4>
+          <p style="text-align: justify;"><%= @product.description %></p>
       </div>
     </div>
   </div>
@@ -56,11 +50,11 @@
       
       <% else %>
         <%= link_to 'Buy', product_orders_path(@product), method: :post, class: 'btn-pry btn ', style: "display: block", data: { confirm: "Are you sure?" } %>
-      <% end %>  <%= link_to 'Back', :back, class: 'btn-sec', style: 'display: block' %>
+      <% end %>  <%= link_to 'Back', products_path, class: 'btn-sec', style: 'display: block' %>
 
     <% else %>
       <%= link_to 'Buy', product_orders_path(@product), method: :post, class: 'btn-pry btn', style: "display: block", data: { confirm: "Are you sure?" } %>
-        <%= link_to 'Back', :back, class: 'btn-sec', style: 'display: block' %>
+        <%= link_to 'Back', products_path, class: 'btn-sec', style: 'display: block' %>
     <% end %>
 
     <% if @product.user == current_user %>
