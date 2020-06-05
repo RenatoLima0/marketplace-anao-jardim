@@ -4,7 +4,8 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.where('disponibility > 0')
-    
+   
+    @products = @products.geocoded 
 
     @markers = @products.map do |product|
       {
