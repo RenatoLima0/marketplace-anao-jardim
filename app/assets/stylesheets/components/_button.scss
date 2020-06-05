@@ -6,6 +6,7 @@
   font-size: 17px;
   font-weight: 600;
   padding: 15px 50px;
+  text-transform: capitalize;
   transition: .3s;
 }
 
@@ -13,4 +14,33 @@
   background-color: $blue;
   color: #fff;
   text-decoration: none;
+}
+
+.btn-sec {
+  background-color: #2ed573;
+  border-radius: 20px;
+  text-transform: capitalize;
+  color: #fff;
+  font-family: 'Roboto';
+  font-size: 17px;
+  font-weight: 600;
+  padding: 15px 50px;
+  transition: .3s;
+}
+.div-btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.div-renatomonstro {
+  background-color: #EA2027;
+  border-radius: 20px;
+  text-transform: capitalize;
+  color: #fff;
+  font-family: 'Roboto';
+  font-size: 17px;
+  font-weight: 600;
+  padding: 15px 50px;
+  transition: .3s;
 }
