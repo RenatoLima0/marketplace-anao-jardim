@@ -22,3 +22,23 @@
   }
 }
 
+.card-produtos{
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.6);
+  p{
+    color: #fff;
+  }
+
+  .card-footer{
+    background-color: $primary-color;
+    
+    h2, a{
+      color: #fff;
+      margin: 0;
+    }
+  }
+}
+
