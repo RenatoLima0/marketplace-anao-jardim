@@ -13,6 +13,16 @@
 @import "components/index";
 @import "pages/index";
 
-body{
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin-bottom: 60px;
   font-family: $body-font;
+}
+.product-details{
+  font-size: 2rem;
+  color: $primary-color;
+  text-transform: capitalize;
 }
